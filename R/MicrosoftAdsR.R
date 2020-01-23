@@ -135,8 +135,8 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
   header <- paste(readLines(paste0(path,"reporting.header.xml")), collapse = "")
   bodyXML <- paste(readLines(paste0(path,"reporting.SubmitGenerateReportRequest.xml")), collapse = "")
   columnsXML <- getColumnsXML(reportname, columms)
-  #bodyXML <- sprintf(bodyXML, report, report, columnsXML, credentials$account_id, endDate$day, endDate$month, endDate$year, startDate$day, startDate$month, startDate$year)
-  bodyXML <- sprintf(bodyXML, report, report, columnsXML, account_id, endDate$day, endDate$month, endDate$year, startDate$day, startDate$month, startDate$year)
+  bodyXML <- sprintf(bodyXML, report, report, columnsXML, credentials$account_id, endDate$day, endDate$month, endDate$year, startDate$day, startDate$month, startDate$year)
+  #bodyXML <- sprintf(bodyXML, report, report, columnsXML, account_id, endDate$day, endDate$month, endDate$year, startDate$day, startDate$month, startDate$year)
   body <- sprintf(header, SOAPAction, credentials$access_token, account_id, credentials$customer_id, credentials$developer_token, bodyXML)
   h = basicTextGatherer()
   body
