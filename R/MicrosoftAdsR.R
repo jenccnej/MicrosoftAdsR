@@ -110,7 +110,9 @@ Authentication <- function(credentials)
 
 
 getReportId <- function(credentials, report, columns, startDate, endDate){
+  print("123")
   dateSplitter <- function(x){
+    print("321")
     x <- as.Date(x, origin = "1970-01-01")
     tmp <- list()
     tmp$year <- as.integer(format(x, "%Y"))
@@ -128,9 +130,7 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
   }
 
   startDate <- dateSplitter(credentials$startDate)
-  print("123")
   endDate <- dateSplitter(credentials$endDate)
-  print("321")
   reportname <- gsub("Request","",report)
   url <- "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc"
   SOAPAction <- "SubmitGenerateReport"
