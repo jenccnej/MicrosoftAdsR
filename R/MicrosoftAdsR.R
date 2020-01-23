@@ -128,9 +128,9 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
   }
 
   startDate <- dateSplitter(credentials$startDate)
-  print(startDate)
+  print("123")
   endDate <- dateSplitter(credentials$endDate)
-  print(endDate)
+  print("321")
   reportname <- gsub("Request","",report)
   url <- "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc"
   SOAPAction <- "SubmitGenerateReport"
