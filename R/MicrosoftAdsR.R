@@ -126,6 +126,8 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
     for(column in columns){
       columnsXML <- paste0(columnsXML, "<", report, "Column>", column, "</", report, "Column>")
     }
+    
+    print(columnsXML)
     return(columnsXML)
   }
 
