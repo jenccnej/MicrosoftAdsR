@@ -137,7 +137,9 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
   url <- "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc"
   SOAPAction <- "SubmitGenerateReport"
   header <- paste(readLines(paste0(path,"reporting.header.xml")), collapse = "")
+  print(header)
   bodyXML <- paste(readLines(paste0(path,"reporting.SubmitGenerateReportRequest.xml")), collapse = "")
+  print(bodyXML)
   columnsXML <- getColumnsXML(reportname, columms)
   bodyXML <- sprintf(bodyXML, report, report, columnsXML, credentials$account_id, endDate$day, endDate$month, endDate$year, startDate$day, startDate$month, startDate$year)
   #bodyXML <- sprintf(bodyXML, report, report, columnsXML, account_id, endDate$day, endDate$month, endDate$year, startDate$day, startDate$month, startDate$year)
