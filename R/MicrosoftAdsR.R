@@ -112,7 +112,6 @@ Authentication <- function(credentials)
 getReportId <- function(credentials, report, columns, startDate, endDate){
   print("123")
   dateSplitter <- function(x){
-    print("321")
     x <- as.Date(x, origin = "1970-01-01")
     tmp <- list()
     tmp$year <- as.integer(format(x, "%Y"))
@@ -137,11 +136,11 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
   url <- "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc"
   SOAPAction <- "SubmitGenerateReport"
   header <- paste(readLines(paste0(path,"reporting.header.xml")), collapse = "")
-  print(header)
   bodyXML <- paste(readLines(paste0(path,"reporting.SubmitGenerateReportRequest.xml")), collapse = "")
-  print(bodyXML)
   columnsXML <- getColumnsXML(reportname, columms)
+  print(columnsXML)
   bodyXML <- sprintf(bodyXML, report, report, columnsXML, credentials$account_id, endDate$day, endDate$month, endDate$year, startDate$day, startDate$month, startDate$year)
+  print(bodyXML)
   #bodyXML <- sprintf(bodyXML, report, report, columnsXML, account_id, endDate$day, endDate$month, endDate$year, startDate$day, startDate$month, startDate$year)
   body <- sprintf(header, SOAPAction, credentials$access_token, account_id, credentials$customer_id, credentials$developer_token, bodyXML)
   h = basicTextGatherer()
